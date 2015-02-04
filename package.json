@@ -1,0 +1,19 @@
+{
+    "name": "Scramble",
+    "version": "0.1.0",
+    "main": "index.js",
+    "dependencies": {
+        "imap": "0.8.14",
+        "mail-listener": "0.7.1"
+    },
+    "devDependencies": {
+        "readline-sync":"*",
+        "progress":"*",
+        "mkdirp":"*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dcposch/scramble"
+    }
+}
+
