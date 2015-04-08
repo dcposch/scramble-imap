@@ -112,3 +112,7 @@ ScrambleImap.prototype.fetchAll = function () {
 
   imap.connect()
 }
+
+ScrambleImap.prototype.disconnect = function () {
+  this.imap.disconnect()
+}
