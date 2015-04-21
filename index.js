@@ -1,5 +1,5 @@
 var EventEmitter = require('events').EventEmitter
-var Imap = require('imap')
+var IMAP = require('imap')
 var inherits = require('util').inherits
 
 /**
@@ -14,22 +14,22 @@ var inherits = require('util').inherits
  *
  * TODO: assumes Gmail for now
  */
-module.exports = ScrambleImap
+module.exports = ScrambleIMAP
 
-function ScrambleImap (options) {
+function ScrambleIMAP (options) {
   EventEmitter.call(this)
-  this.imap = new Imap(options)
+  this.imap = new IMAP(options)
 }
-inherits(ScrambleImap, EventEmitter)
+inherits(ScrambleIMAP, EventEmitter)
 
 /**
- * Returns an IMAP connection to Gm
+ * Returns an IMAP connection to Gmail
  */
-ScrambleImap.createForGmail = function (user, password) {
+ScrambleIMAP.createForGmail = function (user, password) {
   if (!/@gmail.com$/.test(user)) {
     user = user + '@gmail.com'
   }
-  return new ScrambleImap({
+  return new ScrambleIMAP({
     user: user,
     password: password,
     host: 'imap.gmail.com',
@@ -38,7 +38,7 @@ ScrambleImap.createForGmail = function (user, password) {
   })
 }
 
-ScrambleImap.prototype.fetchAll = function () {
+ScrambleIMAP.prototype.fetchAll = function () {
   var numFetched = 0
   console.time('fetchAll')
   var self = this
@@ -113,6 +113,9 @@ ScrambleImap.prototype.fetchAll = function () {
   imap.connect()
 }
 
-ScrambleImap.prototype.disconnect = function () {
-  this.imap.disconnect()
+/**
+ * Immediately disconnects from the IMAP server.
+ */
+ScrambleIMAP.prototype.disconnect = function () {
+  this.imap.destroy()
 }

@@ -1,4 +1,4 @@
-var ScrambleImap = require('./index.js')
+var ScrambleIMAP = require('./index.js')
 var fs = require('fs')
 var util = require('util')
 var mkdirp = require('mkdirp')
@@ -14,7 +14,7 @@ var gmailPassword = readlineSync.question('Password: ')
 var outputDir = gmailUser
 
 // Connect to Gmail IMAP and start downloading all mail
-var imap = ScrambleImap.createForGmail(gmailUser, gmailPassword)
+var imap = ScrambleIMAP.createForGmail(gmailUser, gmailPassword)
 var progressBar
 var outputStream
 imap.fetchAll()
